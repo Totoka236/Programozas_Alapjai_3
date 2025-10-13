@@ -59,7 +59,7 @@ public class beerList {
         if(cmd.length > 2) throw new IllegalArgumentException("save: too many arguments");
         if(cmd.length < 2) throw new IllegalArgumentException("save: lack of arguments");
 
-        File file = new File(System.getProperty(cmd[1]), cmd[1]);
+        File file = new File(cmd[1]);
 
         if(!file.exists()) file.createNewFile();
 
