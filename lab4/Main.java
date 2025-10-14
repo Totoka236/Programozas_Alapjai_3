@@ -40,6 +40,14 @@ public class Main {
                 if(cmd[0].equals("save")) { //if command is "save" than saves beerlist to file specified
                     BeerList.save(cmd);
                 }
+
+                if(cmd[0].equals("search")) { //if command is "search" than search with parameters
+                    BeerList.search(cmd);
+                }
+
+                if(cmd[0].equals("find")) { //if command is "find" than list beers containing paramter
+                    BeerList.find(cmd);
+                }
             } catch(Exception e) {System.out.println(e.getMessage());}
         }
     }

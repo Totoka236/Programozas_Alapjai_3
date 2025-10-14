@@ -10,6 +10,8 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class BeerList {
     
@@ -29,13 +31,32 @@ public class BeerList {
         System.out.println("New beer added!");
     }
 
-    public static void list(String[] cmd) {
+    public static void list(String[] cmd) throws Exception { //TODO list does not work alonelisd
+        if(cmd.length > 2) throw new Exception("list: too many arguments");
+
         if(beers.size() == 0) {
             System.out.println("No beers in the list!");
             return;
         }
 
-        for(Beer beer : beers) {
+        ArrayList<Beer> tmp = (ArrayList<Beer>) beers.clone(); 
+        
+        if(cmd[1].equals("name")) {
+           
+            Collections.sort(tmp, new NameComparator());
+        }
+
+        if(cmd[1].equals("style")) {
+           
+            Collections.sort(tmp, new StyleComparator());
+        }
+
+        if(cmd[1].equals("stregth")) {
+           
+            Collections.sort(tmp, new StrengthComparator());
+        }
+
+        for(Beer beer : tmp) {
             System.out.println(beer.toString());
         }
     }
@@ -68,5 +89,22 @@ public class BeerList {
         os.writeObject(beers);
         os.close();
 
+    }
+
+    public static void search(String[] cmd) throws Exception {
+        if(cmd.length > 2) throw new IllegalArgumentException("search: too many arguments");
+        for(Beer beer : beers) {
+            if(cmd[1].equals(beer.getName()))
+                System.out.println(beer.toString());
+        }
+    }
+
+    public static void find(String[] cmd) throws Exception { //TODO does not work properly
+        if(cmd.length > 2) throw new IllegalArgumentException("find: too many arguments");
+
+        for(Beer beer : beers) {
+            if(cmd[1].contains(beer.getName()))
+                System.out.println(beer.toString());
+        }
     }
 }
