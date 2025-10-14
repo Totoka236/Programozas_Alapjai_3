@@ -2,10 +2,10 @@ package lab4;
 
 import java.util.Comparator;
 
-public class NameComparator implements Comparator<Beer> {
+public class StyleComparator implements Comparator<Beer> {
 
-    public int compareName(Beer b1, Beer b2) {
-        return b1.name.compareTo(b2.name);
+    public int compareStyle(Beer b1, Beer b2) {
+        return b1.style.compareTo(b2.style);
     }
 
     @Override
@@ -14,5 +14,6 @@ public class NameComparator implements Comparator<Beer> {
         //throw new UnsupportedOperationException("Unimplemented method 'compare'");
         return 0;
     }
+    
     
 }
