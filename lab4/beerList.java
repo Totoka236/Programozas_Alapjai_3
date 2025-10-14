@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class beerList {
+public class BeerList {
     
     static ArrayList<Beer> beers = new ArrayList<>();
 
