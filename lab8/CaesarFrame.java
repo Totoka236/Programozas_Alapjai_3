@@ -1,4 +1,4 @@
-package lab8;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,6 +48,7 @@ public class CaesarFrame extends JFrame {
 
         this.add(upperPanel, BorderLayout.NORTH);
         this.add(bottomPanel, BorderLayout.SOUTH);
+        button.addActionListener(new OkButtonActtionListener());
         
         this.setVisible(true);
 
@@ -57,8 +58,12 @@ public class CaesarFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            Caesar c = new Caesar();
+            String text = input.getText();
+            char offset = (char) box.getSelectedItem();
+            output.setText(c.caesarCode(text, offset));
+
+
         }
 
     }
